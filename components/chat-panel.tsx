@@ -38,14 +38,20 @@ export function ChatPanel({
 
   const exampleMessages = [
     {
-      heading: 'List flights flying from',
-      subheading: 'San Francisco to Rome today',
-      message: `List flights flying from San Francisco to Rome today`
+      heading: 'Creative Confidence and Brainstorming',
+      subheading: 'Get support and feedback throughout the writing process',
+      message: `Help me out with developing this personal narrative.`
     },
     {
-      heading: 'What is the status',
-      subheading: 'of flight BA142?',
-      message: 'What is the status of flight BA142?'
+      heading: 'Writing with Purpose for an Audience',
+      subheading: 'Get support with writing for a specific purpose',
+      message:
+        'Help me tailor this personal narrative to a specific audience and purpose.'
+    },
+    {
+      heading: 'Connecting with the Audience',
+      subheading: 'Get feedback from your intended audience',
+      message: 'Give me feedback on my story for my intended audience.'
     }
   ]
 
@@ -88,16 +94,7 @@ export function ChatPanel({
                     toast(
                       <div className="text-red-600">
                         You have reached your message limit! Please try again
-                        later, or{' '}
-                        <a
-                          className="underline"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href="https://vercel.com/templates/next.js/gemini-ai-chatbot"
-                        >
-                          deploy your own version
-                        </a>
-                        .
+                        later.
                       </div>
                     )
                   }

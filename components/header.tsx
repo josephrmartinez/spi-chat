@@ -29,8 +29,9 @@ async function UserOrLogin() {
           <SidebarToggle />
         </>
       ) : (
-        <Link href="/new" rel="nofollow">
-          <img className="size-6" src="/images/gemini.png" alt="gemini logo" />
+        <Link href="/new" rel="nofollow" className="text-sm font-medium">
+          {/* <img className="size-6" src="/images/gemini.png" alt="gemini logo" /> */}
+          New chat
         </Link>
       )}
       <div className="flex items-center">
@@ -54,28 +55,6 @@ export function Header() {
         <React.Suspense fallback={<div className="flex-1 overflow-auto" />}>
           <UserOrLogin />
         </React.Suspense>
-      </div>
-      <div className="flex items-center justify-end gap-2">
-        <Button asChild size="sm" variant="ghost">
-          <a
-            target="_blank"
-            href="https://github.com/vercel-labs/gemini-chatbot"
-            rel="noopener noreferrer"
-          >
-            <IconGitHub />
-            <span className="hidden ml-2 md:flex">GitHub</span>
-          </a>
-        </Button>
-        <Button asChild size="sm" className="rounded-lg gap-1">
-          <a
-            href="https://vercel.com/templates/next.js/gemini-ai-chatbot"
-            target="_blank"
-          >
-            <IconVercel className="size-3" />
-            <span className="hidden sm:block">Deploy to Vercel</span>
-            <span className="sm:hidden">Deploy</span>
-          </a>
-        </Button>
       </div>
     </header>
   )
