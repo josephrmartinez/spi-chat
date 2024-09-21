@@ -3,7 +3,6 @@ import { GeistMono } from 'geist/font/mono'
 import { Analytics } from '@vercel/analytics/react'
 import '@/app/globals.css'
 import { cn } from '@/lib/utils'
-import { TailwindIndicator } from '@/components/tailwind-indicator'
 import { Providers } from '@/components/providers'
 import { Header } from '@/components/header'
 import { Toaster } from '@/components/ui/sonner'
@@ -15,8 +14,7 @@ export const metadata = {
     default: 'Next.js Gemini Chatbot',
     template: `%s - Next.js Gemini Chatbot`
   },
-  description:
-    'Build your own generative UI chatbot using the Vercel AI SDK and Google Gemini',
+  description: 'Personal Narrative Chatbot',
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon-16x16.png',
@@ -57,7 +55,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <Header />
             <main className="flex flex-col flex-1">{children}</main>
           </div>
-          <TailwindIndicator />
         </Providers>
         <Analytics />
       </body>
