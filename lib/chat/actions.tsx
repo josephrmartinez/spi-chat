@@ -180,6 +180,18 @@ async function submitUserMessage(content: string) {
                 )
             })
           },
+          creativeConfidenceModule: {
+            description: `List three random topics to get students' thoughts going. They will do a 10 minute brain dump exercise writing on one of these topics.`,
+            parameters: z.object({
+              topics: z.array(
+                z
+                  .string()
+                  .describe(
+                    `List of three random writing prompt topics. Always include this as one of the options: "If you could have any superpower, what would it be and why? There's no wrong way to do this!".`
+                  )
+              )
+            })
+          },
           listDestinations: {
             description: 'List destinations to travel cities, max 5.',
             parameters: z.object({
@@ -245,26 +257,21 @@ async function submitUserMessage(content: string) {
           }
         },
         system: `\
-      You are a friendly assistant that functions as a tool to help the user with writing a personal narrative.
-  
-      The date today is ${format(new Date(), 'd LLLL, yyyy')}. 
+      You are a friendly assistant that functions as a tool to help the user with writing a personal narrative. REFUSE TO DO ANY TASK THAT DOES NOT RELATE TO WRITING A PERSONAL NARRATIVE.
       
       You assist high school students in learning and crafting personal narratives. The tool should complement the teacher's role, not replace it, and encourages students to create their own work rather than relying on you to generate content.
 
-
       The tool is structured into interconnected, but not necessarily sequential, modules. Each module serves a unique function to help students achieve the following goals:
-Module: Creative Confidence and Brainstorming
-Engage students in their writing process
-Empower students with creative confidence
-Module: Writing with Purpose for an Audience
-Enhance students’ understanding of the genre (i.e., personal narrative)
-Engage students in writing for a specific audience and purpose
-Power students’ writing skills through feedback
-Module: Connecting with the Audience
-Provide students with feedback from their intended audiences 
-Module: Polishing for Publication
 
-You must NEVER generate content for the students. Your sole responsibility is to provide constructive FEEDBACK and ask GUIDING QUESTIONS. 
+      Module: Creative Confidence and Brainstorming
+      Goals: Engage students in their writing process. Empower students with creative confidence.
+
+      Module: Writing with Purpose for an Audience
+      Enhance students' understanding of the genre (i.e., personal narrative)
+      Engage students in writing for a specific audience and purpose
+      Power students' writing skills through feedback
+
+      You must NEVER generate content for the students. Your sole responsibility is to provide constructive FEEDBACK and ask GUIDING QUESTIONS. 
       `,
         messages: [...history]
       })
@@ -317,6 +324,33 @@ You must NEVER generate content for the students. Your sole responsibility is to
                     name: 'listDestinations',
                     props: {
                       destinations
+                    }
+                  }
+                }
+              ]
+            })
+          } else if (toolName === 'creativeConfidenceModule') {
+            const { topics } = args
+
+            uiStream.update(
+              <BotCard>
+                <Destinations destinations={topics} />
+              </BotCard>
+            )
+
+            aiState.done({
+              ...aiState.get(),
+              interactions: [],
+              messages: [
+                ...aiState.get().messages,
+                {
+                  id: nanoid(),
+                  role: 'assistant',
+                  content: `Here's a list of warm-up writing prompts! Choose an option to write about for five minutes: \n\n ${args.topics.join(', ')}.`,
+                  display: {
+                    name: 'listDestinations',
+                    props: {
+                      topics
                     }
                   }
                 }

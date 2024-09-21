@@ -39,19 +39,15 @@ export function ChatPanel({
   const exampleMessages = [
     {
       heading: 'Creative Confidence and Brainstorming',
-      subheading: 'Get support and feedback throughout the writing process',
-      message: `Help me out with developing this personal narrative.`
+      subheading:
+        'Not yet sure what to write about? Get started with some creative writing prompts.',
+      message: `Let's start the Creative Confidence and Brainstorming module.`
     },
     {
       heading: 'Writing with Purpose for an Audience',
-      subheading: 'Get support with writing for a specific purpose',
-      message:
-        'Help me tailor this personal narrative to a specific audience and purpose.'
-    },
-    {
-      heading: 'Connecting with the Audience',
-      subheading: 'Get feedback from your intended audience',
-      message: 'Give me feedback on my story for my intended audience.'
+      subheading:
+        'Already have a topic in mind or a first draft? Get support with writing for a specific purpose.',
+      message: `Let's start the Writing with Purpose for an Audience module`
     }
   ]
 

@@ -8,10 +8,12 @@ export function EmptyScreen() {
           Personal Narrative Builder
         </h1>
         <p className="leading-normal text-zinc-900">
-          An app that assists high school students in learning and crafting
-          personal narratives. It is designed to complement the teacher's role,
-          not replace it, and encourages students to create their own work
-          rather than relying on the tool to generate content.
+          Get support throughout the process of crafting personal narratives.
+        </p>
+        <p className="leading-normal text-zinc-900">
+          This tool is designed to complement the teacher's role, not replace
+          it, and encourages students to create their own work rather than
+          relying on the tool to generate content.
         </p>
       </div>
     </div>
